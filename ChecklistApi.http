@@ -1,0 +1,6 @@
+@ChecklistApi_HostAddress = http://localhost:5249
+
+GET {{ChecklistApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
