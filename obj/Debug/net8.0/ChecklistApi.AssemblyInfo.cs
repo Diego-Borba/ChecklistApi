@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChecklistApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b510f22caaa1d0d2767c4e610b3ee3994d87155")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChecklistApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChecklistApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -133,3 +133,5 @@ C:\Apis\ChecklistApi\obj\Debug\net8.0\refint\ChecklistApi.dll
 C:\Apis\ChecklistApi\obj\Debug\net8.0\ChecklistApi.pdb
 C:\Apis\ChecklistApi\obj\Debug\net8.0\ChecklistApi.genruntimeconfig.cache
 C:\Apis\ChecklistApi\obj\Debug\net8.0\ref\ChecklistApi.dll
+C:\Apis\ChecklistApi\bin\Debug\net8.0\ChecklistApi.staticwebassets.runtime.json
+C:\Apis\ChecklistApi\obj\Debug\net8.0\ChecklistApi.sourcelink.json

@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Apis\\ChecklistApi\\wwwroot\\css\\js\\index.html",
+      "PackagePath": "staticwebassets\\css\\js\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ChecklistApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ChecklistApi.props",
+      "PackagePath": "build\\ChecklistApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ChecklistApi.props",
+      "PackagePath": "buildMultiTargeting\\ChecklistApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ChecklistApi.props",
+      "PackagePath": "buildTransitive\\ChecklistApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

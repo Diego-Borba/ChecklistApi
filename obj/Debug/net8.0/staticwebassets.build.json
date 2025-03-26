@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "FJPdFhq9O8BGAD2ojE3sgaFftD3ztJSdf/i+Mh0JNsw=",
+  "Hash": "CUzNZmj7Ye3cD4TAOid6qtZQ92Fsx+aHj6UYz4930Gc=",
   "Source": "ChecklistApi",
   "BasePath": "_content/ChecklistApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "ChecklistApi\\wwwroot",
+      "Source": "ChecklistApi",
+      "ContentRoot": "C:\\Apis\\ChecklistApi\\wwwroot\\",
+      "BasePath": "_content/ChecklistApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Apis\\ChecklistApi\\wwwroot\\css\\js\\index.html",
+      "SourceId": "ChecklistApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Apis\\ChecklistApi\\wwwroot\\",
+      "BasePath": "_content/ChecklistApi",
+      "RelativePath": "css/js/index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\js\\index.html"
+    }
+  ]
 }

@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configuração do CORS (movido para cima)
+// Configuração do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
@@ -36,20 +36,26 @@ builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
 
 var app = builder.Build();
 
-// Pipeline de requisições HTTP
-
-// Habilitar CORS (antes de outros middlewares)
-app.UseCors("AllowAll");
-
-// Swagger apenas em desenvolvimento
+// Ordem CRÍTICA dos middlewares
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
+
+// Importante: UseStaticFiles deve vir antes de UseRouting
+app.UseStaticFiles();
+
+// Importante: UseCors deve vir depois de UseRouting e antes de UseAuthorization
+app.UseRouting();
+
 app.UseAuthorization();
+
 app.MapControllers();
+
+// Rota fallback deve ser a última configuração
+app.MapFallbackToFile("index.html");
 
 app.Run();

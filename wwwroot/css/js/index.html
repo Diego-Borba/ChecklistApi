@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de Checklist de Implantação">
+    <title>Checklist de Implantação</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .checklist-container {
+            max-width: 800px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            margin: 1rem;
+        }
+
+        .section-group {
+            border-left: 4px solid #0d6efd;
+            padding-left: 1rem;
+            margin: 2rem 0;
+        }
+
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body class="d-flex justify-content-center align-items-center">
+    <div id="loading">Processando...</div>
+
+    <main class="checklist-container">
+        <h1 class="h2 mb-4 text-center">Checklist de Implantação</h1>
+
+        <div class="mb-3">
+            <label for="cnpj" class="form-label">Buscar pelo CNPJ do Cliente:</label>
+            <div class="input-group">
+                <input type="text" id="cnpj" class="form-control" placeholder="Digite o CNPJ">
+                <button class="btn btn-primary" onclick="buscarChecklist()">Buscar</button>
+            </div>
+        </div>
+
+        <div id="error" class="alert alert-danger mb-3" style="display: none;"></div>
+
+        <form id="checklistForm" novalidate>
+            <fieldset class="section-group">
+                <legend class="h5 fw-bold mb-3">Módulos Adquiridos:</legend>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="web"><label
+                        class="form-check-label" for="web">WEB</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="datacash"><label
+                        class="form-check-label" for="datacash">DATACASH</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="bmpdv"><label
+                        class="form-check-label" for="bmpdv">BMPDV</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="nfce"><label
+                        class="form-check-label" for="nfce">NFCE</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="dashboard"><label
+                        class="form-check-label" for="dashboard">DASHBOARD</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="bmlink"><label
+                        class="form-check-label" for="bmlink">BMLINK</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="corefood"><label
+                        class="form-check-label" for="corefood">COREFOOD</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="bmpdvStone"><label
+                        class="form-check-label" for="bmpdvStone">BMPDV STONE</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="bmpdvRede"><label
+                        class="form-check-label" for="bmpdvRede">BMPDV REDE</label></div>
+            </fieldset>
+
+            <fieldset class="section-group">
+                <legend class="h5 fw-bold mb-3">Checklist Implantação:</legend>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="1"><label
+                        class="form-check-label">Adquirir informações da rotina do cliente</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="2"><label
+                        class="form-check-label">Treinamento inicial de cadastros</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="3"><label
+                        class="form-check-label">Treinamento entrada de notas</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="4"><label
+                        class="form-check-label">Treinamento de ficha técnica/composição</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="5"><label
+                        class="form-check-label">Treinamento de financeiro</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="6"><label
+                        class="form-check-label">Treinamento de estoque</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="7"><label
+                        class="form-check-label">Instalação de servidor + PDVs</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="8"><label
+                        class="form-check-label">Solicitar Stone Code e solicitar credenciamento</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="9"><label
+                        class="form-check-label">Treinamento de vendas</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="10"><label
+                        class="form-check-label">Treinamento emissão de NFe saída</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="11"><label
+                        class="form-check-label">Treinamento BMLINK</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="12"><label
+                        class="form-check-label">Instalação integrador iFood</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="13"><label
+                        class="form-check-label">Instalação integrador BMLINK</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="14"><label
+                        class="form-check-label">Mostrar como gerar arquivo para etiquetas e configurar sistema para
+                        leitura</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="15"><label
+                        class="form-check-label">Validar cadastros após conversão com cliente</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="16"><label
+                        class="form-check-label">Gerar planilha de classificação fiscal</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="17"><label
+                        class="form-check-label">Confirmar retorno da análise sobre a planilha de classificação
+                        fiscal</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="18"><label
+                        class="form-check-label">Definir data para virada e abrir o chamado de virada</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="19"><label
+                        class="form-check-label">Realizar verificação de pré-virada</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="20"><label
+                        class="form-check-label">Cliente em produção</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="21"><label
+                        class="form-check-label">Finalizar implantação</label></div>
+            </fieldset>
+
+            <fieldset class="section-group">
+                <legend class="h5 fw-bold mb-3">Checklist Pré-Virada:</legend>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="22"><label
+                        class="form-check-label">Verificar comunicações com os terminais</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="23"><label
+                        class="form-check-label">Verificar instalações do sistema</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="24"><label
+                        class="form-check-label">Validar preços com o cliente</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="25"><label
+                        class="form-check-label">Validar cadastros de produtos de balança e deixar sistema com a leitura
+                        correta</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" data-item-id="26"><label
+                        class="form-check-label">Rodar validação de cadastros para emissão de NFCE</label></div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-success w-100 mt-3">Salvar</button>
+        </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        // Configuração da API - altere para sua URL
+        const API_BASE_URL = 'https://localhost:5001/api/checklists';
+
+        $(document).ready(function () {
+            $('#cnpj').mask('00.000.000/0000-00');
+        });
+
+        function showLoading(show) {
+            $('#loading').css('display', show ? 'flex' : 'none');
+        }
+
+        function showError(message) {
+            const errorDiv = $('#error');
+            errorDiv.text(message || 'Ocorreu um erro inesperado.');
+            errorDiv.show();
+            setTimeout(() => errorDiv.hide(), 5000);
+        }
+
+        function validateCNPJ(cnpj) {
+            cnpj = cnpj.replace(/\D/g, '');
+            return cnpj.length === 14;
+        }
+
+        async function buscarChecklist() {
+            const cnpj = $('#cnpj').val().replace(/\D/g, '');
+            console.log('CNPJ formatado:', cnpj); // Debug
+
+            try {
+                console.log('Iniciando requisição...'); // Debug
+                const response = await fetch(`https://localhost:5001/api/checklists/cnpj/${cnpj}`);
+
+                console.log('Resposta recebida:', response); // Debug
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Dados recebidos:', data); // Debug
+                    preencherFormulario(data);
+                } else if (response.status === 404) {
+                    console.log('CNPJ não encontrado'); // Debug
+                    if (confirm('Checklist não encontrado. Deseja criar um novo?')) {
+                        criarNovoChecklist(cnpj);
+                    }
+                } else {
+                    console.error('Erro na resposta:', response.status); // Debug
+                    alert('Erro ao buscar checklist');
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error); // Debug
+                alert('Erro ao conectar com o servidor');
+            }
+        }
+
+        function preencherFormulario(checklist) {
+            // Módulos
+            $('#web').prop('checked', checklist.web);
+            $('#datacash').prop('checked', checklist.datacash);
+            $('#bmpdv').prop('checked', checklist.bmpdv);
+            $('#nfce').prop('checked', checklist.nfce);
+            $('#dashboard').prop('checked', checklist.dashboard);
+            $('#bmlink').prop('checked', checklist.bmlink);
+            $('#corefood').prop('checked', checklist.corefood);
+            $('#bmpdvStone').prop('checked', checklist.bmpdvStone);
+            $('#bmpdvRede').prop('checked', checklist.bmpdvRede);
+
+            // Itens do checklist
+            if (checklist.itens && checklist.itens.length > 0) {
+                checklist.itens.forEach(item => {
+                    $(`input[data-item-id="${item.id}"]`).prop('checked', item.concluido);
+                });
+            }
+        }
+
+        async function criarNovoChecklist(cnpj) {
+            showLoading(true);
+
+            const novoChecklist = {
+                cnpj: cnpj,
+                web: false,
+                datacash: false,
+                bmpdv: false,
+                nfce: false,
+                dashboard: false,
+                bmlink: false,
+                corefood: false,
+                bmpdvStone: false,
+                bmpdvRede: false,
+                itens: []
+            };
+
+            // Adicionar itens padrão
+            $('.form-check-input[data-item-id]').each(function () {
+                const itemId = $(this).data('item-id');
+                const fieldset = $(this).closest('fieldset');
+                const tipo = fieldset.find('legend').text().includes('Pré-Virada') ? 'PreVirada' : 'Implantacao';
+
+                novoChecklist.itens.push({
+                    id: itemId,
+                    descricao: $(this).next('label').text().trim(),
+                    concluido: false,
+                    tipo: tipo
+                });
+            });
+
+            try {
+                const response = await fetch(API_BASE_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(novoChecklist)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                preencherFormulario(data);
+                alert('Novo checklist criado com sucesso!');
+            } catch (error) {
+                console.error('Erro:', error);
+                showError(`Falha ao criar checklist: ${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        $('#checklistForm').submit(async function (e) {
+            e.preventDefault();
+
+            const cnpj = $('#cnpj').val();
+
+            if (!validateCNPJ(cnpj)) {
+                showError('CNPJ inválido! Deve conter 14 dígitos.');
+                return;
+            }
+
+            showLoading(true);
+
+            const checklist = {
+                cnpj: cnpj.replace(/\D/g, ''),
+                web: $('#web').is(':checked'),
+                datacash: $('#datacash').is(':checked'),
+                bmpdv: $('#bmpdv').is(':checked'),
+                nfce: $('#nfce').is(':checked'),
+                dashboard: $('#dashboard').is(':checked'),
+                bmlink: $('#bmlink').is(':checked'),
+                corefood: $('#corefood').is(':checked'),
+                bmpdvStone: $('#bmpdvStone').is(':checked'),
+                bmpdvRede: $('#bmpdvRede').is(':checked'),
+                itens: []
+            };
+
+            // Coletar estado dos itens
+            $('.form-check-input[data-item-id]').each(function () {
+                const itemId = $(this).data('item-id');
+                const fieldset = $(this).closest('fieldset');
+                const tipo = fieldset.find('legend').text().includes('Pré-Virada') ? 'PreVirada' : 'Implantacao';
+
+                checklist.itens.push({
+                    id: itemId,
+                    descricao: $(this).next('label').text().trim(),
+                    concluido: $(this).is(':checked'),
+                    tipo: tipo
+                });
+            });
+
+            try {
+                // Verificar se já existe
+                const checkResponse = await fetch(`${API_BASE_URL}/cnpj/${checklist.cnpj}`);
+                let method = 'POST';
+                let url = API_BASE_URL;
+
+                if (checkResponse.ok) {
+                    const existing = await checkResponse.json();
+                    checklist.id = existing.id;
+                    method = 'PUT';
+                    url = `${API_BASE_URL}/${existing.id}`;
+                }
+
+                const saveResponse = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(checklist)
+                });
+
+                if (!saveResponse.ok) {
+                    throw new Error(`Erro ${saveResponse.status}: ${saveResponse.statusText}`);
+                }
+
+                alert('Checklist salvo com sucesso!');
+            } catch (error) {
+                console.error('Erro:', error);
+                showError(`Falha ao salvar checklist: ${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
