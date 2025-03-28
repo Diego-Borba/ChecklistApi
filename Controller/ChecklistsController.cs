@@ -56,7 +56,7 @@ namespace ChecklistApi.Controllers
             return CreatedAtAction(nameof(GetChecklistByCnpj), new { cnpj = checklist.Cnpj }, checklist);
         }
 
-        // PUT: api/Checklists/5
+        // PUT: api/Checklists/
         [HttpPut("{id}")]
         public async Task<IActionResult> PutChecklist(int id, [FromBody] Checklist checklist)
         {
